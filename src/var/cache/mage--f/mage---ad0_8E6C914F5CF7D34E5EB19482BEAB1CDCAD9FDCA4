@@ -1,0 +1,43 @@
+<div class="footer-col">
+	<h4>¿Por qué comprar?</h4>
+	<div class="footer-col-content">
+		<ul>
+			<li><a href="#">Envíos y Devoluciones</a></li>
+			<li><a href="#">Compras Seguras</a></li>
+			<!--<li><a href="#">Envío internacional</a></li>//-->
+			<li><a href="#">Afiliados</a></li>
+			<li><a href="#">Ventas de Grupo</a></li>
+		</ul>
+	</div>
+</div>
+<div class="footer-col">
+<h4>Mi cuenta</h4>
+	<div class="footer-col-content">
+		<ul>
+			<li><a href="https://losreservas1811.local/es/customer/account/login/?___SID=S">Inicia sesión</a></li>
+			<li><a href="http://losreservas1811.local/es/checkout/cart/?___SID=U">Ver Carrito</a></li>
+			<li><a href="https://losreservas1811.local/es/wishlist/?___SID=S">Mi lista de deseos</a></li>
+			<li><a href="#">Estado de mi pedido</a></li>
+			<li><a href="#">Ayuda</a></li>
+		</ul>
+	</div>
+</div>
+<div class="footer-col last">
+<h4>Contacto</h4>
+	<div class="footer-col-content">
+		<p>LOS RESERVAS 1811, SL</p>
+                <p class="email">
+<script language="JavaScript" type="text/javascript">
+  function decode(a) {
+    // ROT13 : a Caesar cipher 
+    // letter -> letter' such that code(letter') = (code(letter) + 13) modulo 26
+    return a.replace(/[a-zA-Z]/g, function(c){
+      return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+    })
+  }; 
+  document.write("<a href=" + decode("znvygb:vasb@ybferfreinf1811.pbz") + ">" + decode("vasb@ybferfreinf1811.pbz") + "</a>" + "<br>");
+</script>
+                </p>
+		<p>Puede ponserse en contacto con nosotros a través de la dirección de correo aquí facilitada, o bién a través del formulario de contacto de la página <a href="http://losreservas1811.local/es/contacts/?___SID=U">Contáctenos</a>. Muchas gracias.</p>
+	</div>
+</div>
