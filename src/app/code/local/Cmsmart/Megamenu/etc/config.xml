@@ -5,8 +5,8 @@
             <version>0.1.0</version>
         </Cmsmart_Megamenu>
     </modules>
-    
-	 <admin>
+
+    <admin>
         <routers>
             <adminhtml>
                 <args>
@@ -15,13 +15,13 @@
                     </modules>
                 </args>
                 <megamenu_mysql4>
-					<class>Cmsmart_Megamenu_Model_Mysql4</class>
-					<entities>
-						<megamenu>
-							<table>admin_menutop</table>
-						</megamenu>
-					</entities>
-				</megamenu_mysql4>
+                    <class>Cmsmart_Megamenu_Model_Mysql4</class>
+                    <entities>
+                        <megamenu>
+                            <table>admin_menutop</table>
+                        </megamenu>
+                    </entities>
+                </megamenu_mysql4>
             </adminhtml>
         </routers>
     </admin>
@@ -34,7 +34,9 @@
             </updates>
         </layout>
         <events>
-            <core_layout_block_create_after>
+            <!-- Error detected and fixed below //-->
+            <!--<core_layout_block_create_after>//-->
+            <controller_action_layout_generate_blocks_after>
                 <observers>
                     <megamenu>
                         <type>singleton</type>
@@ -42,7 +44,8 @@
                         <method>checkLayouts</method>
                     </megamenu>
                 </observers>
-            </core_layout_block_create_after>
+            <!--</core_layout_block_create_after>//-->
+            </controller_action_layout_generate_blocks_after>
         </events>
     </frontend>
     <global>
@@ -84,39 +87,39 @@
             <megamenu>
                 <class>Cmsmart_Megamenu_Block</class>
             </megamenu>
-			<adminhtml ifconfig ="advanced/modules_disable_output/Cmsmart_Megamenu">
-				<rewrite>
-					<catalog_category_tabs>Cmsmart_Megamenu_Block_Catalog_Category_Tabs</catalog_category_tabs>
-				</rewrite>
-			</adminhtml>
+            <adminhtml ifconfig ="advanced/modules_disable_output/Cmsmart_Megamenu">
+                <rewrite>
+                    <catalog_category_tabs>Cmsmart_Megamenu_Block_Catalog_Category_Tabs</catalog_category_tabs>
+                </rewrite>
+            </adminhtml>
         </blocks>
         <helpers>
             <megamenu>
                 <class>Cmsmart_Megamenu_Helper</class>
             </megamenu>
         </helpers>
-		<events> 
+        <events>
             <catalog_category_prepare_save>
-           	 <observers>
-              <Cmsmart_megamenu_observer>
-                <class>Cmsmart_Megamenu_Model_Observer</class>
-                <method>saveCategoryTop</method>
-              </Cmsmart_megamenu_observer>
-            </observers>
+                <observers>
+                    <Cmsmart_megamenu_observer>
+                        <class>Cmsmart_Megamenu_Model_Observer</class>
+                        <method>saveCategoryTop</method>
+                    </Cmsmart_megamenu_observer>
+                </observers>
             </catalog_category_prepare_save>
-		</events>
+        </events>
     </global>
     <default>
-    	<megamenu>
-	    	<mainmenu>
-				<enabled>1</enabled>
-	    		<home>0</home>         
-				<home_color></home_color>	
-				<home_background ></home_background >	
+        <megamenu>
+            <mainmenu>
+                <enabled>1</enabled>
+                <home>0</home>
+                <home_color></home_color>
+                <home_background ></home_background >
                 <width_menu>950</width_menu>
                 <width_thumbnail_category>24</width_thumbnail_category>
                 <height_thumbnail_category>29</height_thumbnail_category>
-	    	</mainmenu>
-    	</megamenu>
+            </mainmenu>
+        </megamenu>
     </default>
 </config>
