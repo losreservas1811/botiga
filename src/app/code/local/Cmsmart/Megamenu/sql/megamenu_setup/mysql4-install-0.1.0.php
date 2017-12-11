@@ -6,7 +6,7 @@
 * Websites: http://cmsmart.net
 * Technical Support: Forum - http://cmsmart.net/support
 * GNU General Public License v3 (http://opensource.org/licenses/GPL-3.0)
-* Copyright © 2011-2013 Cmsmart.net. All Rights Reserved.
+* Copyright (c) 2011-2013 Cmsmart.net. All Rights Reserved.
 */
 $installer = $this;
 $installer->startSetup();

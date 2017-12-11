@@ -34,12 +34,12 @@
  /**
 * Name Extension: Megamenu
 * Version: 0.1.0
-* Author: The Cmsmart Development Team 
+* Author: The Cmsmart Development Team
 * Date Created: 16/08/2013
 * Websites: http://cmsmart.net
 * Technical Support: Forum - http://cmsmart.net/support
 * GNU General Public License v3 (http://opensource.org/licenses/GPL-3.0)
-* Copyright © 2011-2013 Cmsmart.net. All Rights Reserved.
+* Copyright (c) 2011-2013 Cmsmart.net. All Rights Reserved.
 */
 class Cmsmart_Megamenu_Block_Catalog_Category_Tabs extends Mage_Adminhtml_Block_Catalog_Category_Tabs
 {
@@ -148,31 +148,41 @@ class Cmsmart_Megamenu_Block_Catalog_Category_Tabs extends Mage_Adminhtml_Block_
                 ->setAttributes($attributes)
                 ->setAddHiddenFields($active)
                 ->toHtml();
-            $this->addTab('group_' . $group->getId(), array(
-                'label'     => Mage::helper('catalog')->__($group->getAttributeGroupName()),
-                'content'   => $block,
-                'active'    => $active
-            ));
+            $this->addTab(
+                'group_' . $group->getId(), 
+                array(
+                    'label'     => Mage::helper('catalog')->__($group->getAttributeGroupName()),
+                    'content'   => $block,
+                    'active'    => $active
+                )
+            );
         }
 
-        $this->addTab('products', array(
-            'label'     => Mage::helper('catalog')->__('Category Products'),
-            'content'   => $this->getLayout()->createBlock(
-                'adminhtml/catalog_category_tab_product',
-                'category.product.grid'
-            )->toHtml(),
-        ));
+        $this->addTab(
+            'products', 
+            array(
+                'label'     => Mage::helper('catalog')->__('Category Products'),
+                'content'   => $this->getLayout()->createBlock(
+                    'adminhtml/catalog_category_tab_product',
+                    'category.product.grid'
+                )->toHtml(),
+            )
+        );
 
         // dispatch event add custom tabs
-        Mage::dispatchEvent('adminhtml_catalog_category_tabs', array(
-            'tabs'  => $this
-        ));
+        Mage::dispatchEvent(
+            'adminhtml_catalog_category_tabs', 
+            array('tabs'  => $this)
+        );
 
-        $this->addTab('menutop', array(
-            'label'     => Mage::helper('catalog')->__('Menu top'),
-			//'content'    => 'aaaaa',
-            'content'   => $this->getLayout()->createBlock('megamenu/catalog_category_tabs_form')->toHtml(),
-        ));       
+        $this->addTab(
+            'menutop', 
+            array(
+                'label'     => Mage::helper('catalog')->__('Menu top'),
+                //'content'    => 'aaaaa',
+                'content'   => $this->getLayout()->createBlock('megamenu/catalog_category_tabs_form')->toHtml(),
+            )
+        );
         return parent::_prepareLayout();
     }
 }
