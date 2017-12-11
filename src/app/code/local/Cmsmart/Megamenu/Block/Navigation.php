@@ -19,8 +19,10 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
      */
     public function _prepareLayout()
     {
-
-        if (!Mage::getStoreConfig('megamenu/mainmenu/enabled')) return;
+        if (!Mage::getStoreConfig('megamenu/mainmenu/enabled')) {
+            return;
+        }
+        
         $layout = $this->getLayout();
         $this->setTemplate('cmsmart/megamenu/topmenu.phtml');
         $head = $layout->getBlock('head');
@@ -68,7 +70,6 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
             if ($child->getIsActive()) {
                 $activeChildren[] = $child;
             }
-
         }
 
         $activeChildrenCount = count($activeChildren);
@@ -98,7 +99,6 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         }
         $column = $this->getLevle($category->getId());
 
-
         $attributes = array();
         if (count($classes) > 0) {
             $attributes['class'] = implode(' ', $classes);
@@ -113,8 +113,6 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
             $nothumbnail .= ' level-thumbnail';
         }
         $htmlLi = '<li ';
-
-
 
         foreach ($attributes as $attrName => $attrValue) {
             $htmlLi .= ' ' . $attrName .  '="' . str_replace('"', '\"', $attrValue) . ' ' . $nothumbnail . '"';
@@ -140,10 +138,10 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         } else {
             $html[] = '<a  style="background-color:'. $this->backgroundcolor($megamenu).'" href="'.$this->getCategoryUrl($category).'"' .$linkClass.'>';
         }
-        if($showthumbnail == 1){
+        if ($showthumbnail == 1) {
             if ($imgaes) {
                 $html[] = '<img src="' . Mage::getBaseUrl('media').'catalog/category/' . $imgaes .'" width="'.$width.'" height="'.$height.'" style="float: left;z-index: 1" />' ;
-            }else {
+            } else {
                 $html[] = '<div class="thumbnail"></div>';
             }
         } else {
@@ -180,7 +178,6 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
                 $childrenWrapClass,
                 $noEventAttributes
             );
-
             $j++;
         }
 
@@ -195,7 +192,7 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
             $html[] = '<span class="opener">&nbsp;</span>';
 
         if ($childrenWrapClass) {
-            if(!$level){
+            if (!$level) {
                 $html[] = '<div class="' . $childrenWrapClass  . '">';
             } else {
                 $html[] = '<div class="' . $childrenWrapClass  .'">';
@@ -264,7 +261,6 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
                         $classchildren = '';
                         $html[] = '<div class="catagory_children '. $classchildren  .' column'.$this->getLevle($id).'">'.$htmlChildren.'</div>';
                     }
-
                 }
             }
             
