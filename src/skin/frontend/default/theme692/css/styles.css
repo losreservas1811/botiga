@@ -2819,7 +2819,7 @@ body.ps-static .wrapper-hover:hover .product-image {
 /* Print Pages */
 .page-print .print-head {margin-bottom:20px;}
 .page-print .col-1,
-.page-print .col-2 {margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:10px; width:46%;}
+.page-print .col-2 {margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:10px; width:46%; float:left;}
 .page-print h1 {font-size:25px; line-height:40px;}
 .page-print  h2 {margin-bottom:5px;}
 .page-print th.a-right {text-align:center !important;}
