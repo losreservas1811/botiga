@@ -115,7 +115,7 @@ class Cmsmart_Megamenu_Block_Navigation extends Mage_Catalog_Block_Navigation
         $htmlLi = '<li ';
 
         foreach ($attributes as $attrName => $attrValue) {
-            $htmlLi .= ' ' . $attrName .  '="' . str_replace('"', '\"', $attrValue) . ' ' . $nothumbnail . '"';
+            $htmlLi .= ' ' . $attrName .  '="' . str_replace('"', '\"', $attrValue) . ' ' . $nothumbnail . '" ';
         }
 
         if ($level == 1) {
