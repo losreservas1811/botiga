@@ -1163,6 +1163,9 @@ img.lazy{
 
 /*********************************************************************** Block: Spacials *********************************************************************************************/
 .widget-catalogsale-products {}
+.widget-catalogsale-products > div.category-title {
+    margin: 30px 0 40px;
+}
 .widget-catalogsale-products .price-box .price-label {display:none;}
 
 #product_tabs_review_tabbed_contents #review-form h3 span{ color:#ad5b7c;}
@@ -3341,7 +3344,7 @@ body.cms-home div.footer-cols-wrapper {
 }
 .container-slider > a.tumbSlider-next {right: 5px; left: auto;}
 /* ======================================= Home Page ============================================================== */
-.row-cat {margin-bottom: 60px;}
+.row-cat {margin-bottom: 30px;}
 .row-cat li > a {position: relative; display: block; color: #000; overflow: hidden;}
 .row-cat li > a img {max-width: 100%;}
 .row-cat .content-center {
