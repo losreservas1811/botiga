@@ -470,9 +470,10 @@ p.control input.radio { margin-right:6px; }
 .form-list .customer-dob .dob-day,
 .form-list .customer-dob .dob-month { width:60px; }
 .form-list .customer-dob .dob-day input.input-text,
-.form-list .customer-dob .dob-month input.input-text { width:35px; }
+.form-list .customer-dob .dob-month input.input-text { width:45px; }
 .form-list .customer-dob .dob-year { width:140px; }
 .form-list .customer-dob .dob-year input.input-text { width:213px; }
+input#year { width:65px; }
 
 .buttons-set { clear:both; margin:5px 0 0; padding:5px 0 5px 0;}
 

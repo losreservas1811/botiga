@@ -8,3 +8,5 @@
 "Product Sitemap","Sitemap producto"
 "Category Sitemap","Categoría Sitemap"
 "Special products","Productos con descuento"
+"Mage_Catalog::This product is available for purchase in increments of %s only.","Este producto está disponible para comprar en múltiplos de %s únicamente."
+"Mage_Captcha::Please type the letters below","Por favor introduzca los caracteres de debajo"
