@@ -4,4 +4,5 @@ src/includes/*
 src/.htaccess
 src/app/etc/local.xml
 src/shell/cleaner.sh
+src/downloader
 releases

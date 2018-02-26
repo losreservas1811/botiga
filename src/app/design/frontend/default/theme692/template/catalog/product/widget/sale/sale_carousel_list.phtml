@@ -1,8 +1,11 @@
 <?php
-    $_productCollection=$this->getLoadedProductCollection();
+    $_productCollection = $this->getLoadedProductCollection();
     $_helper = $this->helper('catalog/output');
+    
+    $_products = $this->getProductCollection();
+    $_productsSize = $_products->getSize();
 ?>
-<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+<?php if ((!empty($_products)) && $_productsSize > 0): ?>
 <?php
     $_collectionSize = $_products->getSize();
 
@@ -15,6 +18,8 @@
                 <a class="carousel-next2 fa fa-chevron-right" href="#"></a>
             </div>';
     } else {
+        $_homeIndent = "";
+        $_slidControl2 = '';
         $_sliderOnOf = "grid-clol-6";
         $_itemwidth = "col-item6";
     }
