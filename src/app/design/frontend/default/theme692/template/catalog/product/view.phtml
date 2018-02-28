@@ -71,6 +71,119 @@
             <div class="clear"></div>
             <?php echo $this->getChildHtml('extrahint') ?>
 
+                <div class="add-to-box">
+                    <!-- Product specific data //-->
+                    <div id="specific_data">
+                    <?php
+                        $attributeSetModel = Mage::getModel("eav/entity_attribute_set");
+                        $attributeSetModel->load($_product->getAttributeSetId());
+                        $attributeSetName  = $attributeSetModel->getAttributeSetName();
+                        if ($attributeSetName == 'Vinos') { ?>
+                            <ul class="add-to-links" id='wine_details'>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('brand');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getBrand();
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('wine_certificate_of_origin');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getWineCertificateOfOrigin();
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('year');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getYear();
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('color');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getAttributeText('color');
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('wine_type');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getAttributeText('wine_type');
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('wine_grape_variety');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getWineGrapeVariety();
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                            </ul>
+                    <?php } elseif ($attributeSetName == 'Cavas') { ?>
+                            <ul class="add-to-links" id='cava_details'>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('brand');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getBrand();
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('year');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getYear();
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('color');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getAttributeText('color');
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('cava_type');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getAttributeText('cava_type');
+                                    echo $attributeValue;
+                                ?>
+                                </li>
+                                <li><b><?php
+                                    $attribute = $_product->getResource()->getAttribute('cava_grape_variety');
+                                    echo $attribute->getStoreLabel();
+                                    ?></b>:&nbsp;<?php
+                                    $attributeValue = $_product->getAttributeText('cava_grape_variety');
+                                    $firstItem = true;
+                                    foreach ($attributeValue as $item) {
+                                        if (!$firstItem) {
+                                            echo ', ';
+                                        } else {
+                                            $firstItem = false;
+                                        }
+                                        echo $item;
+                                    }
+                                ?>
+                                </li>
+                            </ul>
+                    <?php } ?>
+                    </div>
+                    <!-- END Product specific data //-->
+                </div>
             <?php if (!$this->hasOptions()):?>
                 <div class="add-to-box">
                     <?php if($_product->isSaleable()): ?>
@@ -93,7 +206,7 @@
                 <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
             <?php endif;?>
             <div class="row-product">
-                <?php echo $this->getReviewsSummaryHtml($_product, false, true)?>
+                <?php //echo $this->getReviewsSummaryHtml($_product, false, true)?>
                 
                 <?php if ($this->canEmailToFriend()): ?>
                     <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>

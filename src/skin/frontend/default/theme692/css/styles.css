@@ -1940,6 +1940,10 @@ body.ps-static .wrapper-hover:hover .product-image {
 .ajaxcartmsg .product-shop .add-to-cart button.button > span {padding: 0; font-size: inherit; line-height: normal; }
 .ajaxcartmsg .product-view .add-to-cart .qty-block {margin-top: 0;}
 .product-view .add-to-links {clear:left; margin:0px !important; padding: 15px 0 5px; border-bottom: 1px solid #e5e5e5;  border-top: 1px solid #e5e5e5; width: 100%; }
+.product-view #cava_details,
+.product-view #wine_details {
+    min-height: 215px;
+}
 
 .product-options-bottom:after {
     content: "";
