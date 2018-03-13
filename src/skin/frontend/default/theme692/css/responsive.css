@@ -378,6 +378,7 @@
     .product-view .row-product .ratings {float:none;padding-bottom:19px;}
     .product-view .row-product .ratings .rating-links {padding-left:0 !important;}
     .product-view .add-to-links li+li {display:none;}
+     div#specific_data .add-to-links li+li {display:block;}
     .product-options .options-list li label { padding-top:2px; }
     .product-view .box-description .std {padding: 0 15px;}
     .product-view .box-description .std p {margin: 0;}
