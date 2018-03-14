@@ -250,7 +250,7 @@ input.input-text,select,textarea, .form-control {
     border:1px solid #e5e5e5;
     border-radius: 0;
 }
-input.input-text,textarea { padding:6px 12px; resize:none; -webkit-appearance: none; border-radius: 0;}
+input.input-text,textarea { padding:6px 6px; resize:none; -webkit-appearance: none; border-radius: 0;}
 select {
     padding:2px;
     moz-box-sizing:border-box;
@@ -1729,6 +1729,8 @@ body.ps-static .wrapper-hover:hover .product-image {
 .add-to-cart .qty-block { float:left; padding-top:0; }
 .add-to-cart label { margin-right: 7px; color:#3a3a3a; }
 .add-to-cart .qty {  font-size:12px; text-align:center; padding: 3px 6px 4px 7px; background: #fff; line-height: 24px; }
+.add-to-cart a.decrement_qty i.fa-minus-square,
+.add-to-cart a.increment_qty i.fa-plus-square {line-height: 34px; font-size: 2.8em;vertical-align: bottom;}
 .add-to-cart button.button { float:right; margin-left:5px; }
 .add-to-cart .paypal-logo { clear:left; text-align:right; }
 .add-to-cart .paypal-logo .paypal-or { clear:both; display:block; margin:5px 46px 5px 0; }

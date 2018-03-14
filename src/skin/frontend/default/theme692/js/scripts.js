@@ -557,6 +557,7 @@ jQuery(document).ready(function () {
     }
     ;
 
+    /*
     var parentTD;
     var newDiv;
     var navigationDiv;
@@ -600,11 +601,11 @@ jQuery(document).ready(function () {
             }
         });
     });
+    */
 
 });
 
 jQuery(window).load(function () {
-
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
     if (!isMobile) {
         if (jQuery(".box-2").length) {
@@ -613,19 +614,15 @@ jQuery(window).load(function () {
         ;
         if (jQuery(".box-3").length) {
             jQuery(".box-3").cherryFixedParallax({invert: true});
-        }
-        ;
-
-    }
-    ;
+        };
+    };
     if (jQuery("img.lazy").length) {
         jQuery("img.lazy").unveil(1, function () {
             jQuery(this).load(function () {
                 jQuery(this).animate({'opacity': 1}, 300);
             });
         });
-    }
-    ;
+    };
 
 });
 

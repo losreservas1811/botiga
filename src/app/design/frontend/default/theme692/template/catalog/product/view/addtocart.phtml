@@ -39,7 +39,14 @@
         <?php if (!$_product->isGrouped()): ?>
             <div class="qty-block">
                 <label for="qty"><?php echo $this->__('Qty:') ?></label>
-                <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" />
+                <a class="decrement_qty" href="javascript:void(0)" >
+                    <i class="fa fa-minus-square fa-lg" aria-hidden="true" >
+                    </i>
+                </a>
+                <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" class="input-text qty" readonly="readonly" />
+                <a class="increment_qty" href="javascript:void(0)">
+                    <i class="fa fa-plus-square fa-lg" aria-hidden="true" ></i>
+                </a>
             </div>
         <?php endif; ?>
         <button type="button" title="<?php echo $buttonTitle ?>" class="button btn-cart" onclick="productAddToCartForm.submit(this)">
@@ -48,3 +55,24 @@
         <?php echo $this->getChildHtml('', true, true) ?>
     </div>
 <?php endif; ?>
+<script type="text/javascript">
+//<![CDATA[
+jQuery(document).ready(function(){
+jQuery('.increment_qty').click(function() {
+    var oldVal = jQuery(this).parent().find("input").val();
+    if (parseFloat(oldVal) >= <?php echo $_product->getStockItem()->getData('qty_increments'); ?>) {
+        var newVal = parseFloat(oldVal) + <?php echo $_product->getStockItem()->getData('qty_increments'); ?>;
+        jQuery(this).parent().find("input").val(newVal);
+    }
+});
+
+jQuery('.decrement_qty').click(function() {
+    var oldVal = jQuery(this).parent().find("input").val();
+    if (parseFloat(oldVal) > <?php echo $_product->getStockItem()->getData('qty_increments'); ?>) {
+        var newVal = parseFloat(oldVal) - <?php echo $_product->getStockItem()->getData('qty_increments'); ?>;
+        jQuery(this).parent().find("input").val(newVal);
+    }
+    });
+});
+//]]>
+</script>
