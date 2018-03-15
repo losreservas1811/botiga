@@ -179,12 +179,12 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
     <?php endif; ?>
     <td class="a-center">
-        <a href="javascript:decreaseQty(<?php echo $_item->getId() ?>, <?php echo $qty_increments ?>)" class="decrement_qty"><span class="fa fa-minus"></span></a>
+        <a href="javascript:decreaseQty(<?php echo $_item->getId() ?>, <?php echo $qty_increments ?>)" class="decrement_qty"><span class="fa fa-minus-circle"></span></a>
         <input id="quantity-item-<?php echo $_item->getId() ?>" name="cart[<?php echo $_item->getId() ?>][qty]"
                data-cart-item-id="<?php echo $this->jsQuoteEscape($_item->getSku()) ?>"
                value="<?php echo $this->getQty() ?>" size="4" title="<?php echo $this->__('Qty') ?>" class="input-text qty" maxlength="12" 
                readonly="readonly" />
-        <a href="javascript:increaseQty(<?php echo $_item->getId() ?>, <?php echo $qty_increments ?>)" class="increment_qty"><span class="fa fa-plus"></span></a>
+        <a href="javascript:increaseQty(<?php echo $_item->getId() ?>, <?php echo $qty_increments ?>)" class="increment_qty"><span class="fa fa-plus-circle"></span></a>
     </td>
 
     <!--Sub total starts here -->

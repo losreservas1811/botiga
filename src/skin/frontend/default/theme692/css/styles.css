@@ -657,7 +657,8 @@ tr.summary-total td {}
 tr.summary-total .summary-collapse { float:right; text-align:right; padding-left:20px; background:url(../images/bkg_collapse.gif) 0 4px no-repeat; cursor:pointer; }
 tr.show-details .summary-collapse { background-position:0 -53px; }
 tr.show-details td {}
-tr.summary-details td { font-size:11px; background-color:#dae1e4; color:#626465; }
+tr.summary-details td { font-size:11px; background-color:#dae1e4; color:#626465 !important; }
+tr.summary-details td span.price { color:#626465 !important; }
 tr.summary-details-first td { border-top:1px solid #d2d8db; }
 tr.summary-details-excluded { font-style:italic; }
 
