@@ -2313,9 +2313,9 @@ body.ps-static .wrapper-hover:hover .product-image {
 .cart .shipping .buttons-set{ margin-top:0; padding-top:15px; padding-bottom:10px;}
 
 /* Shopping Cart Totals */
-.cart .totals { background:#3a3a3a; overflow:hidden;padding:0px 0px 0px 0px; width: 34%; float: right;}
+.cart .totals { background:#666; overflow:hidden;padding:0px 0px 0px 0px; width: 34%; float: right;}
 .cart .totals table { width:100%; font-size:12px; color:#7f7f7f; margin-bottom:0px; }
-.cart .totals table tr{ border-bottom:1px solid #606060;}
+.cart .totals table tr{ border-bottom:1px solid #999;}
 .cart .totals table th,
 .cart .totals table td { padding:7px 11px; font-size:13px; line-height:17px; color:#fff; text-transform:uppercase; vertical-align:middle; width:50%;  }
 .cart .totals table tr td:first-child { }
