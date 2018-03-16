@@ -31,27 +31,29 @@
  * @see Mage_Page_Block_Switch
  */
 ?>
-<?php if(count($this->getStores())>1): ?>
-<?php
-$stores = array();
-$_current = null;
-foreach ($this->getStores() as $_lang) {
-    $_selected = $_selected_option = '';
-    if ( ($_lang->getId() == $this->getCurrentStoreId()) ) {
-        $_current =  $_lang;
+<?php if (count($this->getStores()) > 1): ?>
+    <?php
+    $stores = array();
+    $_current = null;
+    foreach ($this->getStores() as $_lang) {
+        $_selected = $_selected_option = '';
+        if (($_lang->getId() == $this->getCurrentStoreId())) {
+            $_current = $_lang;
+        }
     }
-}
-?>
-<div class="header-button lang-list">
-	<span class="select-label-name"><?php echo $this->__('Your Language:') ?></span>
-	<a title="<?php echo $this->__('Language') ?>" href="#"><?php echo $this->htmlEscape($_current->getName()); ?></a>
-	<ul>
-    <?php foreach ($this->getStores() as $_lang): ?>
-        <?php $_selected = ($_lang->getId() == $this->getCurrentStoreId()) ? ' class="selected"' : '' ?>
-		<li>
-			<a <?php echo $_selected ;?> href="<?php echo $_lang->getCurrentUrl() ?>" title="<?php echo $this->htmlEscape($_lang->getLocaleCode()) ?>"><?php echo $this->htmlEscape($_lang->getName()) ?></a>
-		</li>
-    <?php endforeach; ?>
-	</ul>
-</div>
+    ?>
+    <div class="header-button lang-list">
+        <span class="select-label-name"><?php echo $this->__('Your Language:') ?></span>
+        <a title="<?php echo $this->__('Language') ?>" href="#"><?php echo $this->htmlEscape($_current->getName()); ?></a>
+        <ul>
+            <?php foreach ($this->getStores() as $_lang): ?>
+                <?php $_selected = ($_lang->getId() == $this->getCurrentStoreId()) ? ' class="selected"' : '' ?>
+                <li>
+                    <a <?php echo $_selected; ?> href="<?php echo $_lang->getCurrentUrl(false) ?>" title="<?php echo $this->htmlEscape($_lang->getLocaleCode()) ?>">
+                        <?php echo $this->htmlEscape($_lang->getName()) ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 <?php endif; ?>

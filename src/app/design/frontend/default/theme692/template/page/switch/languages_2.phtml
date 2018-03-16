@@ -31,27 +31,30 @@
  * @see Mage_Page_Block_Switch
  */
 ?>
-<?php if(count($this->getStores())>1): ?>
-<!-- <div class="form-language">
-    <label for="select-language"><?php echo $this->__('Your Language:') ?></label>
-    <select id="select-language" title="<?php echo $this->__('Your Language') ?>" onchange="window.location.href=this.value">
+<?php if (count($this->getStores()) > 1): ?>
+    <!-- <div class="form-language">
+        <label for="select-language"><?php echo $this->__('Your Language:') ?></label>
+        <select id="select-language" title="<?php echo $this->__('Your Language') ?>" onchange="window.location.href=this.value">
     <?php foreach ($this->getStores() as $_lang): ?>
         <?php $_selected = ($_lang->getId() == $this->getCurrentStoreId()) ? ' selected="selected"' : '' ?>
-        <option value="<?php echo $_lang->getCurrentUrl() ?>"<?php echo $_selected ?>><?php echo $this->htmlEscape($_lang->getName()) ?></option>
+                <option value="<?php echo $_lang->getCurrentUrl(false) ?>"<?php echo $_selected ?>><?php echo $this->htmlEscape($_lang->getName()) ?></option>
     <?php endforeach; ?>
-    </select>
-</div> -->
-
-<div class="language-list switch-show">
-	<div class="language-title"><span class="label"><?php echo $this->__('Your Language:') ?></span> <strong><?php $locale = Mage::app()->getLocale()->getLocaleCode(); echo substr($locale,0, 2); ?></strong></div>
-	<ul>
-    <?php foreach ($this->getStores() as $_lang): ?>
+        </select>
+    </div> -->
+    <div class="language-list switch-show">
+        <div class="language-title"><span class="label"><?php echo $this->__('Your Language:') ?></span> <strong><?php $locale = Mage::app()->getLocale()->getLocaleCode();
+    echo substr($locale, 0, 2); ?></strong></div>
+        <ul>
+            <?php foreach ($this->getStores() as $_lang): ?>
         <?php $_selected = ($_lang->getId() == $this->getCurrentStoreId()) ? ' class="selected"' : '' ?>
-		<li>
-			<a <?php echo $_selected ;?> href="<?php echo $_lang->getCurrentUrl() ?>" title="<?php echo $this->htmlEscape($_lang->getLocaleCode()) ?>"> <!-- <span><?php echo $this->htmlEscape($_lang->getName()) ?></span> --> <strong><?php echo substr($this->htmlEscape($_lang->getLocaleCode()), 0, 2) ?></strong></a>
-		</li>
+                <li>
+                        <a <?php echo $_selected; ?> href="<?php echo $_lang->getCurrentUrl(false) ?>" title="<?php echo $this->htmlEscape($_lang->getLocaleCode()) ?>">
+                            <!-- <span><?php echo $this->htmlEscape($_lang->getName()) ?></span> -->
+                            <strong><?php echo substr($this->htmlEscape($_lang->getLocaleCode()), 0, 2) ?></strong>
+                        </a>
+                </li>
     <?php endforeach; ?>
-	</ul>
-</div>
+        </ul>
+    </div>
 <?php endif; ?>
 
