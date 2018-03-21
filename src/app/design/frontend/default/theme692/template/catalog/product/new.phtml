@@ -59,7 +59,9 @@
             <?php endif ?>
                 <li class="item <?php echo $_itemwidth; ?> <?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>" itemscope itemtype="http://schema.org/product">
                     <div class="wrapper-hover">
-                        <a  href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image noSwipe" itemprop="url"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(250, 383); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" itemprop="image"/></a>
+                        <a  href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image noSwipe" itemprop="url">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(250, 383); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" itemprop="image"/>
+                        </a>
                         <div class="product-shop">
                             <?php echo $this->getPriceHtml($_product, true, '-new') ?>
                             <h3 class="product-name">
@@ -68,7 +70,7 @@
                                      if (strlen($small_getName) < 20) echo($small_getName);
                                      else { echo mb_substr($small_getName, 0, 20,'UTF-8').'...';} ?>
                                 </a>
-                            </h3> 
+                            </h3>
                             <div class="desc_grid"><?php $small_getDescription = strip_tags($_product->getShortDescription());
                                  if (strlen($small_getDescription) < 80) echo($small_getDescription);
                                  else { echo mb_substr($small_getDescription, 0, 80,'UTF-8').'...';} ?>
@@ -76,7 +78,12 @@
                             <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                             <div class="actions noSwipe">
                                 <?php if($_product->isSaleable()): ?>
-                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button noSwipe btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                                <?php //OLD CODE:: //echo $this->getAddToCartUrl($_product) ?>
+                                <?php $_productUrl = $this->helper('checkout/cart')->getAddUrl($_product);?>
+                                    <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button noSwipe btn-cart" 
+                                            onclick="setLocation('<?php echo $_productUrl; ?>')">
+                                        <span><span><?php echo $this->__('Add to Cart') ?></span></span>
+                                    </button>
                                 <?php else: ?>
                                     <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
                                 <?php endif; ?>
@@ -91,7 +98,7 @@
                             </div>
                         </div>
                         <?php $_product = Mage::getModel('catalog/product')->load($_product->getId()); ?>
-                        <div class="label-product">             
+                        <div class="label-product">
                             <?php if($_product->getData('new')){echo '<span class="new">'.$this->__('New').'</span>';  }?>
                             <?php if($_product->getData('sale')){echo '<span class="sale">'.$this->__('Sale').'</span>';  }?>
                         </div>
