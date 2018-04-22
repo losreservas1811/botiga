@@ -216,7 +216,7 @@
 "Payment method information","Información de las formas de pago"
 "Payment method is not defined","El método de pago no está definido"
 "Payment methods in shopping cart","Formas de pago del carro de la compra"
-"Payment profile # %s: ""%s"".","Perfil de pago # %s: ""%s""."
+"Payment profile # %s: ""%s"".","Perfil de pago %s: ""%s""."
 "Place Order","Hacer un pedido"
 "Please agree to all Terms and Conditions before placing the order.","Debe manifestar su conformidad con todos los términos y condiciones antes de hacer el pedido."
 "Please agree to all Terms and Conditions before placing the orders.","Debe manifestar su conformidad con todos los términos y condiciones antes de hacer los pedidos."
@@ -358,3 +358,4 @@
 "Your recurring payment profiles:","Su perfil de pago periódico:"
 "Zip/Postal Code","Código Postal"
 "ok","De acuerdo"
+"Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.","Clique <a href="%s" onclick="this.target=\'_blank\'">aquí para imprimir</a> una copia de la confirmación de su pedido."
