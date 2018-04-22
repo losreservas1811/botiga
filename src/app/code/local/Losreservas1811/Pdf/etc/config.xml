@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Losreservas1811_Pdf>
+            <version>1.0.0</version>
+        </Losreservas1811_Pdf>
+    </modules>
+    <global>
+        <models>
+            <losreservas1811_pdf>
+                <class>Losreservas1811_Pdf_Model</class>
+            </losreservas1811_pdf>
+        </models>
+        <helpers>
+            <losreservas1811_pdf>
+                <class>Losreservas1811_Pdf_Helper</class>
+            </losreservas1811_pdf>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <losreservas1811_pdf>
+                <use>standard</use>
+                <args>
+                    <module>Losreservas1811_Pdf</module>
+                    <frontName>pdf</frontName>
+                </args>
+            </losreservas1811_pdf>
+        </routers>
+    </frontend>
+</config>
