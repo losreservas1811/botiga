@@ -135,6 +135,7 @@ Calendar.getAbsolutePos = function(element) {
     return res;
 
     // variant 2 (good solution, but lost in IE8)
+    /*
     if (element !== null) {
         res.x = element.offsetLeft;
         res.y = element.offsetTop;
@@ -163,6 +164,7 @@ Calendar.getAbsolutePos = function(element) {
         }
     }
     return res;
+    */
 
     // variant 2 (not working)
 

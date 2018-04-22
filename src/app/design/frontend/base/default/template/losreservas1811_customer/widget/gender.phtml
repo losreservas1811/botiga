@@ -1,0 +1,42 @@
+<?php
+/**
+ * Magento e-commerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * @category   Losreservas1811
+ * @package    Losreservas1811_Customer
+ * @copyright  Copyright (c) 2018 LOS RESERVAS 1811, SL (https://www.losreservas1811.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ *
+ * @category   design
+ * @package    base_default/losreservas1811_customer
+ * @author     LOS RESERVAS 1811 Team <web@losreservas1811.com>
+ */
+?>
+<?php
+/**
+ * Gender widget template
+ *
+ * @see Losreservas1811_Customer_Block_Widget_Gender
+ */
+?>
+<label for="<?php echo $this->getFieldId('gender')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Gender') ?></label>
+<div class="input-box">
+    <select id="<?php echo $this->getFieldId('gender')?>" name="<?php echo $this->getFieldName('gender')?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Gender')) ?>"<?php if ($this->isRequired()):?> class="validate-select"<?php endif; ?> <?php echo $this->getFieldParams() ?>>
+        <?php $options = Mage::getResourceSingleton('customer/customer')->getAttribute('gender')->getSource()->getAllOptions();?>
+        <?php $value = $this->getGender();?>
+        <?php foreach ($options as $option):?>
+            <option value="<?php echo $option['value'] ?>"<?php if ($option['value'] == $value) echo ' selected="selected"' ?>><?php echo $this->__($option['label']); ?></option>
+        <?php endforeach;?>
+    </select>
+</div>

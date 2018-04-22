@@ -1,0 +1,111 @@
+<?php
+/**
+ * Magento e-commerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ *
+ * @category   Losreservas1811
+ * @package    Losreservas1811_Customer
+ * @copyright  Copyright (c) 2018 LOS RESERVAS 1811, SL (https://www.losreservas1811.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ *
+ * @category   design
+ * @package    base_default/losreservas1811_customer
+ * @author     LOS RESERVAS 1811 Team <web@losreservas1811.com>
+ */
+?>
+<?php
+/**
+ * Customer Widget Dob template
+ *
+ * @see Losreservas1811_Customer_Block_Widget_Dob
+ */
+?>
+<label for="<?php echo $this->getFieldId('month')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Date of Birth') ?></label>
+<div class="input-box customer-dob">
+<?php
+    $this->setDateInput('d',
+        '<div class="dob-day">
+             <input type="hidden" id="' . $this->getFieldId('day') . '" name="' . $this->getFieldName('day') . '" value="' . $this->getDay() . '" title="' . $this->__('Day') . '" class="input-text validate-custom" ' . $this->getFieldParams() . ' />
+             <!--<label for="' . $this->getFieldId('day') . '">' . $this->__('DD') . '</label>//-->
+         </div>'
+    );
+
+    $this->setDateInput('m',
+        '<div class="dob-month">
+             <input type="hidden" id="' . $this->getFieldId('month') . '" name="' . $this->getFieldName('month') . '" value="' . $this->getMonth()  . '" title="' . $this->__('Month')  . '" class="input-text validate-custom" ' . $this->getFieldParams()  . ' />
+             <!--<label for="' . $this->getFieldId('month') . '">' . $this->__('MM')  . '</label>//-->
+         </div>'
+    );
+
+    $this->setDateInput('y',
+        '<div class="dob-year">
+             <input type="hidden" id="' . $this->getFieldId('year') . '" name="' . $this->getFieldName('year') . '" value="' . $this->getYear()  . '" title="' . $this->__('Year')  . '" class="input-text validate-custom" ' . $this->getFieldParams()  . ' />
+             <!--<label for="' . $this->getFieldId('year') . '">' . $this->__('YYYY')  . '</label>//-->
+         </div>'
+    );
+?>
+    <?php echo $this->getSortedDateInputs() ?>
+    <?php 
+        $_day = $this->getDay();
+        $_month = $this->getMonth();
+        $_year = $this->getYear();
+        if (!empty($_day)) {
+            $_date = $_day . '/' . $_month . '/' . $_year;
+        } else {
+            $_date = '';
+        }
+    ?>
+    <div class="dob-full" style="<?php //display:none;?>">
+        <img title="Select date" id="_dob_trig" 
+            src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) . 'adminhtml/default/default/images/grid-cal.gif'; ?>" 
+            class="v-middle" style="float: left; width: 25px; padding: 7px 5px 0 0;"/>
+        <input type="text" id="<?php echo $this->getFieldId('dob')?>" name="<?php echo $this->getFieldName('dob')?>"
+            class="input-text validate-dob-ad" style="width: 45%; float:left;"
+            value="<?php echo $_date;?>" readonly="readonly" />
+    </div>
+
+    <div class="validation-advice" style="display:none;"></div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var date = new Date();
+    date.setFullYear(date.getFullYear() - 18);
+    dateString = date.getFullYear() + ('0' + date.getMonth()).slice(-2) + ('0' + date.getDate()).slice(-2);
+    
+    var customer_dob = new Varien.DOB('.customer-dob', <?php echo $this->isRequired() ? 'true' : 'false' ?>, '<?php echo $this->getDateFormat() ?>');
+    Calendar.setup({
+        inputField : '<?php echo $this->getFieldId('dob')?>',
+        ifFormat : '%d/%m/%Y',
+        button : '_dob_trig',
+        align : 'Bl',
+        showsTime : false,
+        singleClick : true,
+        bottomBar : true,
+        //min : dateString,
+        weekNumbers: false,
+    });
+    
+    var $j = jQuery.noConflict();
+    $j('#<?php echo $this->getFieldId('dob')?>').change(function() {
+        var yearNew = $j('#<?php echo $this->getFieldId('dob')?>').val().substring(6,10);
+        var monthNew = $j('#<?php echo $this->getFieldId('dob')?>').val().substring(3,5);
+        var dayNew = $j('#<?php echo $this->getFieldId('dob')?>').val().substring(0,2);
+        $j('#<?php echo $this->getFieldId('year');?>').val(yearNew);
+        $j('#<?php echo $this->getFieldId('month');?>').val(monthNew);
+        $j('#<?php echo $this->getFieldId('day');?>').val(dayNew);
+    })
+//]]>
+</script>
+<script type="text/javascript">
+    Calendar._TT["TT_DATE_FORMAT"] = "%e %B %Y";
+</script>

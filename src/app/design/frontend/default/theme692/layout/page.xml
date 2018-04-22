@@ -38,7 +38,7 @@ Default layout, loads most of the pages
 
                 <!-- <action method="addJs"><script>jquery/jquery-1.11.1.min.js</script></action> -->
                 <action method="addJs"><script>jquery/jquery-1.11.1.min.js</script></action>
-                <action method="addJs"><script>jquery/jquery-migrate-1.2.1.min.js</script></action>                
+                <action method="addJs"><script>jquery/jquery-migrate-1.2.1.min.js</script></action>
                 <action method="addJs"><script>jquery/jquery_noconflict.js</script></action>
 
                 <!-- <action method="addJs"><script>jquery/jquery-ui.js</script></action> -->
@@ -55,15 +55,15 @@ Default layout, loads most of the pages
                 <action method="addJs"><script>varien/js.js</script></action>
                 <action method="addJs"><script>varien/form.js</script></action>
                 <action method="addJs"><script>mage/translate.js</script></action>
-                <action method="addJs"><script>mage/cookies.js</script></action>		
-                
+                <action method="addJs"><script>mage/cookies.js</script></action>
+
                 <action method="addItem"><type>skin_js</type><name>js/jquery.easing.1.3.js</name><params/></action>
                 <action method="addItem"><type>skin_js</type><name>js/jquery.mobile.customized.min.js</name><params/></action>
 
-				<action method="addItem"><type>skin_js</type><name>js/bootstrap.js</name><params/></action>
+                <action method="addItem"><type>skin_js</type><name>js/bootstrap.js</name><params/></action>
                 <action method="addItem"><type>skin_js</type><name>js/jquery.carouFredSel-6.2.1.js</name><params/></action>
                 <action method="addItem"><type>skin_js</type><name>js/jquery.touchSwipe.js</name><params/></action>
-               
+
                 <action method="addItem"><type>skin_js</type><name>js/jquery.bxslider.min.js</name><params/></action>
                 <action method="addItem"><type>skin_js</type><name>js/jquery.unveil.js</name><params/></action>
                 <action method="addItem"><type>skin_js</type><name>js/device.min.js</name><params/></action>
@@ -92,12 +92,21 @@ Default layout, loads most of the pages
                 <action method="addCss"><stylesheet>css/responsive.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/camera.css</stylesheet></action>
                 <action method="addItem"><type>skin_css</type><name>css/styles-ie.css</name><params/><if>lt IE 8</if></action>
-				<action method="addCss"><stylesheet>css/superfish.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/superfish.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/widgets.css</stylesheet></action>
                 <action method="addCss"><stylesheet>css/print.css</stylesheet><params>media="print"</params></action>
 
                 <action method="addItem"><type>js</type><name>lib/ds-sleight.js</name><params/><if>lt IE 7</if></action>
                 <action method="addItem"><type>skin_js</type><name>js/ie6.js</name><params/><if>lt IE 7</if></action>
+
+                <action method="addItem">
+                    <type>js_css</type>
+                    <name>calendar/calendar-blue.css</name>
+                    <params></params>
+                </action>
+                <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+                <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+                <block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>
             </block>
 
             <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
@@ -107,7 +116,7 @@ Default layout, loads most of the pages
             <block type="page/html_notices" name="global_notices" as="global_notices" template="page/html/notices.phtml" />
 
             <block type="page/html_header" name="header" as="header">
-				<block type="checkout/cart_sidebar" name="cart_header" template="checkout/cart/sidebar_header.phtml">
+                <block type="checkout/cart_sidebar" name="cart_header" template="checkout/cart/sidebar_header.phtml">
                     <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
                     <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
                     <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
@@ -119,7 +128,7 @@ Default layout, loads most of the pages
                 <block type="page/template_links" name="top.links" as="topLinks"/>
                 <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
                 <block type="page/switch" name="store_language_2" as="store_language_2" template="page/switch/languages_2.phtml"/>
-				<block type="directory/currency" name="currency" template="directory/currency.phtml"/>
+                <block type="directory/currency" name="currency" template="directory/currency.phtml"/>
                 <block type="directory/currency" name="currency_2" template="directory/currency2.phtml">
                      <action method="unsetData"><key>cache_lifetime</key></action>
                      <action method="unsetData"><key>cache_tags</key></action>
@@ -154,9 +163,9 @@ Default layout, loads most of the pages
             </block>
 
             <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
-				<block type="cms/block" name="footer_list">
-					<action method="setBlockId"><block_id>footer_list</block_id></action>
-				</block>
+                <block type="cms/block" name="footer_list">
+                    <action method="setBlockId"><block_id>footer_list</block_id></action>
+                </block>
                 <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
                     <label>Page Footer</label>
                     <action method="setElementClass"><value>bottom-container</value></action>

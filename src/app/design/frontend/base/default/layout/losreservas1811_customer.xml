@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<layout>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="setTemplate">
+                <template>losreservas1811_customer/account/navigation.phtml</template>
+            </action>
+        </reference>
+    </customer_account>
+    <customer_address_form translate="label">
+        <label>Customer My Account Address Edit Form</label>
+        <!-- Mage_Customer -->
+        <!--<update handle="customer_account"/>-->
+        <reference name="my.account.wrapper">
+            <block type="customer/address_edit" name="customer_address_edit" template="losreservas1811_customer/address/edit.phtml">
+            </block>
+        </reference>
+        <!--<update handle="customer_form_template_handle"/>-->
+    </customer_address_form>
+    <customer_account_edit>
+        <reference name="customer_edit">
+            <action method="setTemplate">
+                <template>losreservas1811_customer/form/edit.phtml</template>
+            </action>
+        </reference>
+    </customer_account_edit>
+    <customer_account_create>
+        <reference name="customer_form_register">
+            <action method="setTemplate">
+                <template>losreservas1811_customer/form/register.phtml</template>
+            </action>
+        </reference>
+    </customer_account_create>
+    
+    <checkout_onepage_index>
+        <reference name='checkout.onepage.billing'>
+            <action method='setTemplate'>
+                <template>losreservas1811_checkout/onepage/billing.phtml</template>
+            </action>
+        </reference>
+        <reference name='checkout.onepage.shipping'>
+            <action method='setTemplate'>
+                <template>losreservas1811_checkout/onepage/shipping.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+</layout>
