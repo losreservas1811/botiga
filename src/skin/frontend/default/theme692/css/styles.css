@@ -554,7 +554,7 @@ div.alert button:hover{ cursor:pointer; background-position:0 -9px;}
     line-height:34px;
     color: #303c4b;
     font-weight: 300;
-    text-transform: capitalize;
+    text-transform: initial;
 }
 .page-title.center,
 .category-title { position: relative; }
@@ -773,8 +773,7 @@ tr.summary-details-excluded { font-style:italic; }
 .header .links li a {display:inline-block;  color: #777777;}
 .header .links li a:hover { color: #ad5b7c;}
 .header .links .top-link-cart,
-.header .links .top-car,
-.header .links li:nth-child(4) {display:none}
+.header .links .top-car {display:none} /*.header .links li:nth-child(4)*/
 .header .skip-links-relative {position: relative; float: right;}
 .header-info {line-height: 26px; padding-top: 6px;}
 .header-info:after {
