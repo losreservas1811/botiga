@@ -30,6 +30,9 @@
  * @see Losreservas1811_Customer_Block_Widget_Dob
  */
 ?>
+<?php
+$storeCode = Mage::app()->getStore()->getCode();
+?>
 <label for="<?php echo $this->getFieldId('month')?>"<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Date of Birth') ?></label>
 <div class="input-box customer-dob">
 <?php
@@ -78,13 +81,15 @@
 </div>
 <script type="text/javascript">
 //<![CDATA[
+    var storeLanguage = '<?php echo $storeCode; ?>';
     var date = new Date();
     date.setFullYear(date.getFullYear() - 18);
     dateString = date.getFullYear() + ('0' + date.getMonth()).slice(-2) + ('0' + date.getDate()).slice(-2);
     
     var customer_dob = new Varien.DOB('.customer-dob', <?php echo $this->isRequired() ? 'true' : 'false' ?>, '<?php echo $this->getDateFormat() ?>');
+    /*
     Calendar.setup({
-        inputField : '<?php echo $this->getFieldId('dob')?>',
+        inputField : '<?php //echo $this->getFieldId('dob')?>',
         ifFormat : '%d/%m/%Y',
         button : '_dob_trig',
         align : 'Bl',
@@ -94,8 +99,76 @@
         //min : dateString,
         weekNumbers: false,
     });
+    */
     
     var $j = jQuery.noConflict();
+    $j( function() {
+        $j( "#<?php echo $this->getFieldId('dob')?>" ).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            //buttonImage: '<?php //echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) . 'adminhtml/default/default/images/grid-cal.gif'; ?>',
+            buttonImageOnly: false,
+            buttonText: "Select date",
+            yearRange: "-100:-18",
+        <?php if ($storeCode == 'es'): ?>
+            closeText: "Cerrar",
+            prevText: "&#x3C;Ant",
+            nextText: "Sig&#x3E;",
+            currentText: "Hoy",
+            monthNames: [ "enero","febrero","marzo","abril","mayo","junio",
+            "julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+            monthNamesShort: [ "ene","feb","mar","abr","may","jun",
+            "jul","ago","sep","oct","nov","dic" ],
+            dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+            dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
+            dayNamesMin: [ "D","L","M","X","J","V","S" ],
+            weekHeader: "Sm",
+            dateFormat: "dd/mm/yy",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ""
+        <?php elseif ($storeCode == 'en'): ?>
+            closeText: "Done",
+            prevText: "Prev",
+            nextText: "Next",
+            currentText: "Today",
+            monthNames: [ "January","February","March","April","May","June",
+            "July","August","September","October","November","December" ],
+            monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+            dayNames: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+            dayNamesShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+            dayNamesMin: [ "Su","Mo","Tu","We","Th","Fr","Sa" ],
+            weekHeader: "Wk",
+            dateFormat: "dd/mm/yy",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ""
+        <?php elseif ($storeCode == 'ca'): ?>
+            closeText: "Tanca",
+            prevText: "Anterior",
+            nextText: "Següent",
+            currentText: "Avui",
+            monthNames: [ "gener","febrer","març","abril","maig","juny",
+            "juliol","agost","setembre","octubre","novembre","desembre" ],
+            monthNamesShort: [ "gen","feb","març","abr","maig","juny",
+            "jul","ag","set","oct","nov","des" ],
+            dayNames: [ "diumenge","dilluns","dimarts","dimecres","dijous","divendres","dissabte" ],
+            dayNamesShort: [ "dg","dl","dt","dc","dj","dv","ds" ],
+            dayNamesMin: [ "dg","dl","dt","dc","dj","dv","ds" ],
+            weekHeader: "Set",
+            dateFormat: "dd/mm/yy",
+            firstDay: 1,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: ""
+        <?php endif;?>
+            
+        });
+    } );
+    
     $j('#<?php echo $this->getFieldId('dob')?>').change(function() {
         var yearNew = $j('#<?php echo $this->getFieldId('dob')?>').val().substring(6,10);
         var monthNew = $j('#<?php echo $this->getFieldId('dob')?>').val().substring(3,5);
@@ -103,9 +176,13 @@
         $j('#<?php echo $this->getFieldId('year');?>').val(yearNew);
         $j('#<?php echo $this->getFieldId('month');?>').val(monthNew);
         $j('#<?php echo $this->getFieldId('day');?>').val(dayNew);
-    })
+    });
+    
+    $j('#_dob_trig').click(function(){
+        $j("#<?php echo $this->getFieldId('dob')?>").datepicker("show");
+    });
 //]]>
 </script>
 <script type="text/javascript">
-    Calendar._TT["TT_DATE_FORMAT"] = "%e %B %Y";
+    //Calendar._TT["TT_DATE_FORMAT"] = "%e %B %Y";
 </script>

@@ -52,26 +52,18 @@
                         <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" />
                     </div>
                 </li>
-                <?php if ($this->isNewsletterEnabled()): ?>
-                <li class="control">
-                    <br />
-                    <input type="checkbox" name="is_subscribed" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
-                    <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
-                    <br /><br />
-                </li>
+                <?php $_dob = $this->getLayout()->createBlock('losreservas1811_customer/widget_dob') ?>
+                <?php if ($_dob->isEnabled()): ?>
+                    <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
                 <?php endif ?>
-            <?php $_dob = $this->getLayout()->createBlock('losreservas1811_customer/widget_dob') ?>
-            <?php if ($_dob->isEnabled()): ?>
-                <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
-            <?php endif ?>
-            <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
-            <?php if ($_taxvat->isEnabled()): ?>
-                <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
-            <?php endif ?>
-            <?php $_gender = $this->getLayout()->createBlock('losreservas1811_customer/widget_gender') ?>
-            <?php if ($_gender->isEnabled()): ?>
-                <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
-            <?php endif ?>
+                <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                <?php if ($_taxvat->isEnabled()): ?>
+                    <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
+                <?php endif ?>
+                <?php $_gender = $this->getLayout()->createBlock('losreservas1811_customer/widget_gender') ?>
+                <?php if ($_gender->isEnabled()): ?>
+                    <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+                <?php endif ?>
             </ul>
         </div>
     <?php if($this->getShowAddressFields()): ?>
@@ -178,16 +170,51 @@
                         </div>
                     </div>
                 </li>
-                <li class="control">
-                    <br />
-                    <?php $titleAcceptPrivacyPolicy = $this->__('You have read and accepted our <a href="%s">Privacy Policy</a>', $this->getUrl('politica-privacidad'));?>
-                    <input type="checkbox" name="accept_privacypolicy" title="<?php $this->__('Acceptance of our Privacy Policy') ?>" value="1" id="accept_privacypolicy" class="required-entry checkbox" />
-                    <label for="is_subscribed" class="required" id="privacy_policy_check"><em>*</em><?php echo $titleAcceptPrivacyPolicy ?></label>
-                </li>
                 <?php echo $this->getChildHtml('form.additional.info'); ?>
                 <?php echo $this->getChildHtml('persistent.remember.me'); ?>
             </ul>
             <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+        </div>
+        <div class="fieldset">
+            <h2 class="legend"><?php echo $this->__('LOPD, GDPR and Privacy Policy') ?></h2>
+            <ul class="form-list">
+                <?php if ($this->isNewsletterEnabled()): ?>
+                <li class="control">
+                    <br />
+                    <input type="checkbox" name="is_subscribed" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                    <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+                    <br />
+                    <span class="small text-justify"><?php echo $this->__('I agree that %s inform me through a newsletter about offers and products, and follow up on those newsletters.', Mage::app()->getStore()->getFrontendName());?></span>
+                </li>
+                <?php endif ?>
+                <li class="control">
+                    <br />
+                    <input type="checkbox" name="accept_cookies" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Cookies')) ?>" value="1" id="accept_cookies"<?php if($this->getFormData()->getAcceptCookies()): ?> checked="checked"<?php endif; ?> class="required-entry checkbox" />
+                    <label for="accept_cookies" class="required"><em>*</em><?php echo $this->__('Cookies') ?></label>
+                    <br />
+                    <span class="small text-justify"><?php echo $this->__('I agree that %s make use of own and third party cookies for its operation, to maintain the session and personalize the user experience, as well as obtain anonymous statistics on the use of the website.', Mage::app()->getStore()->getFrontendName());?></span>
+                    <br />
+                </li>
+                <li class="control">
+                    <br />
+                    <input type="checkbox" name="accept_account" title="<?php echo Mage::helper('core')->quoteEscape($this->__('User account')) ?>" value="1" id="accept_account"<?php if($this->getFormData()->getAcceptAccount()): ?> checked="checked"<?php endif; ?> class="required-entry checkbox" />
+                    <label for="accept_account" class="required"><em>*</em><?php echo $this->__('User account') ?></label>
+                    <br />
+                    <span class="small text-justify"><?php echo $this->__('I agree that %s make use of my personal information to create and account in this website to use it.', Mage::app()->getStore()->getFrontendName());?></span>
+                    <br />
+                </li>
+                <li class="control">
+                    <br />
+                    <?php $titleAcceptPrivacyPolicy = $this->__('I have read and accepted the Privacy Policy');?>
+                    <input type="checkbox" name="accept_privacypolicy" title="<?php $this->__('Acceptance of our Privacy Policy') ?>" value="1" id="accept_privacypolicy"<?php if($this->getFormData()->getAcceptPrivacypolicy()): ?> checked="checked"<?php endif; ?> class="required-entry checkbox" />
+                    <label for="accept_privacypolicy" class="required" id="privacy_policy_check"><em>*</em><?php echo $titleAcceptPrivacyPolicy ?></label>
+                </li>
+                <li>
+                    <div class="blue_field">
+                        <?php echo $this->getLayout()->createBlock("cms/block")->setBlockId("politica-privacidad")->toHtml(); ?>	
+                    </div>
+                </li>
+            </ul>
         </div>
         <div class="buttons-set">
             <p class="required"><?php echo $this->__('* Required Fields') ?></p>

@@ -55,7 +55,8 @@ Default layout, loads most of the pages
 
             <!-- Removes 'Wishlist' link - Default position: 20 -->
             <!-- for Magento 1.3.x -->
-            <action method="removeLinkByUrl"><url helper="wishlist/"/></action>
+            <!-- Commented the remove because of problems related -->
+            <!--<action method="removeLinkByUrl"><url helper="wishlist/"/></action>//-->
 
             <!-- for Magento 1.4.x -->
             <remove name="wishlist_link"/>

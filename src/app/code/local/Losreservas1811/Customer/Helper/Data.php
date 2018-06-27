@@ -23,7 +23,7 @@
  * @package    Losreservas1811_Customer
  * @author     LOS RESERVAS 1811 Team <web@losreservas1811.com>
  */
-class Losreservas1811_Customer_Helper_Data extends Mage_Core_Helper_Abstract
+class Losreservas1811_Customer_Helper_Data extends Mage_Customer_Helper_Data
 {
 
 }
