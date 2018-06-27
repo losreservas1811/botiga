@@ -1,4 +1,4 @@
-// Camera slideshow v1.4.0 - a jQuery slideshow with many effects, transitions, easy to customize, using canvas and mobile ready, based on jQuery 1.9.1+
+// Camera slideshow v1.3.3 - a jQuery slideshow with many effects, transitions, easy to customize, using canvas and mobile ready, based on jQuery 1.4+
 // Copyright (c) 2012 by Manuel Masia - www.pixedelic.com
 // Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 ;(function($){$.fn.camera = function(opts, callback) {
@@ -107,11 +107,6 @@
 		}
 	}
 
-	$.support.borderRadius = false;
-	$.each(['borderRadius','BorderRadius','MozBorderRadius','WebkitBorderRadius','OBorderRadius','KhtmlBorderRadius'], function() {
-		if(document.body.style[this] !== undefined) $.support.borderRadius = true;
-	});
-
 	var opts = $.extend({}, defaults, opts);
 	
 	var wrap = $(this).addClass('camera_wrap');
@@ -123,7 +118,6 @@
 		);
 		
 	var fakeHover = $('.camera_fakehover',wrap);
-	var fakeHoverSelector = ('.camera_fakehover',wrap);
 	
 	fakeHover.append(
 		'<div class="camera_target"></div>'
@@ -139,7 +133,7 @@
 		
 	var loader;
 	
-	if(opts.loader=='pie' && !$.support.borderRadius){
+	if(opts.loader=='pie' && $.browser.msie && $.browser.version < 9){
 		loader = 'bar';
 	} else {
 		loader = opts.loader;
@@ -467,7 +461,6 @@
 							t.css({
 								'height' : hT*r,
 								'margin-left' : 0,
-								'margin-right' : 0,
 								'margin-top' : mTop,
 								'position' : 'absolute',
 								'visibility' : 'visible',
@@ -509,7 +502,6 @@
 							t.css({
 								'height' : h,
 								'margin-left' : mLeft,
-								'margin-right' : mLeft,
 								'margin-top' : 0,
 								'position' : 'absolute',
 								'visibility' : 'visible',
@@ -552,7 +544,6 @@
 							t.css({
 								'height' : h,
 								'margin-left' : mLeft,
-								'margin-right' : mLeft,
 								'margin-top' : 0,
 								'position' : 'absolute',
 								'visibility' : 'visible',
@@ -594,7 +585,6 @@
 							t.css({
 								'height' : hT*r,
 								'margin-left' : 0,
-								'margin-right' : 0,
 								'margin-top' : mTop,
 								'position' : 'absolute',
 								'visibility' : 'visible',
@@ -730,12 +720,12 @@
 			$(nextNav,wrap).animate({opacity:0},0);
 			$(commands,wrap).animate({opacity:0},0);
 			if(isMobile()){
-				$(document).on('vmouseover',fakeHoverSelector,function(){
+				fakeHover.live('vmouseover',function(){
 					$(prevNav,wrap).animate({opacity:1},200);
 					$(nextNav,wrap).animate({opacity:1},200);
 					$(commands,wrap).animate({opacity:1},200);
 				});
-				$(document).on('vmouseout',fakeHoverSelector,function(){
+				fakeHover.live('vmouseout',function(){
 					$(prevNav,wrap).delay(500).animate({opacity:0},200);
 					$(nextNav,wrap).delay(500).animate({opacity:0},200);
 					$(commands,wrap).delay(500).animate({opacity:0},200);
@@ -754,7 +744,7 @@
 		}
 		
 	
-		camera_thumbs_wrap.on('click','.camera_stop',function(){
+		$('.camera_stop',camera_thumbs_wrap).live('click',function(){
 			autoAdv = false;
 			elem.addClass('paused');
 			if($('.camera_stop',camera_thumbs_wrap).length){
@@ -770,7 +760,7 @@
 			}
 		});
 	
-		camera_thumbs_wrap.on('click','.camera_play',function(){
+		$('.camera_play',camera_thumbs_wrap).live('click',function(){
 			autoAdv = true;
 			elem.removeClass('paused');
 			if($('.camera_play',camera_thumbs_wrap).length){

@@ -1,4 +1,4 @@
-jQuery(window).load(function(){  
+jQuery(window).on('load', function(){
     if(checkBrowser() == 'Google Chrome'){
         if (window.addEventListener) window.addEventListener('DOMMouseScroll', wheel, false);
             window.onmousewheel = document.onmousewheel = wheel;

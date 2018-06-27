@@ -2648,7 +2648,8 @@ body.ps-static .wrapper-hover:hover .product-image {
 .account-login .registered-users .f-left{ float:none!important; display:table; font-size:12px; font-weight:bold; text-decoration:none; padding-bottom:12px;}
 .account-login .registered-users .f-left:hover{}
 .account-login .registered-users .buttons-set {clear: both;margin:-19px 0 0 0;padding:5px 0px 0px 0px;}
-.account-create form .fieldset:first-child{ margin-bottom:32px;}
+/*.account-create form .fieldset:first-child{ margin-bottom:32px;}*/
+.account-create form .fieldset{ margin-bottom:32px;}
 /* Account Login/Create Pages ============================================================ */
 
 /* Captcha */
@@ -3109,7 +3110,16 @@ body div.shadow.active-form {height: 100%; width: 100%;}
 
 #at3win #at3winheader h3 {text-align:left !important;}
 /* ==================================back-top ================================================== */
-#back-top {position: fixed; bottom:50px; z-index:99; right: 1%; display:none; width:62px;height:62px; }
+#back-top {
+    position: fixed;
+    bottom:50px;
+    z-index:99; 
+    right: 1%; 
+    display:none; 
+    width:62px;
+    height:62px; 
+    box-shadow: 5px 5px 5px;
+}
 #back-top span {
     display: block;
     text-align: center;
@@ -3355,6 +3365,44 @@ body.cms-home div.footer-cols-wrapper {
     vertical-align: middle;
 }
 .container-slider > a.tumbSlider-next {right: 5px; left: auto;}
+
+.footer-subcol-content .cc-accepted {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    
+    -webkit-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    flex-direction: row;
+    
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    justify-content: center;
+
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;  
+    align-items: center;
+}
+
+.footer-subcol-content .cc-accepted .cc-item {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto; 
+
+    margin: 10px;
+
+    text-align: center;
+}
+
+.footer-subcol-content .cc-accepted .cc-item img {max-width:100%;}
+
 /* ======================================= Home Page ============================================================== */
 .row-cat {margin-bottom: 30px;}
 .row-cat li > a {position: relative; display: block; color: #000; overflow: hidden;}
@@ -3811,3 +3859,31 @@ position: absolute; }
 
 
 div.account-create label#privacy_policy_check a { text-decoration: underline; }
+
+
+.blue_field {
+    width: 99%;
+    height: 180px; float:left;
+    border: 1px solid #ddd;
+    background: none repeat scroll 0 0 #F4F8FF;
+    overflow-y: scroll;
+    color: #666666;
+    padding: 1%;
+}
+
+.blue_field span {
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+.blue_field p {
+    margin-bottom: 7px;
+    font-family: frutiger_roman,"Helvetica Neue",Verdana,Arial,sans-serif;
+}
+
+
+/* == Mobile modifications for Los Reservas 1811, SL === */
+.main-container .container .row .col-xs-12 {
+    padding-right: 13px;
+    padding-left: 13px;
+}
