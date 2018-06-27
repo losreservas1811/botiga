@@ -204,7 +204,7 @@
     <?php // Youama jQuery plugin for ajax call and windows ?>
     <script type="text/javascript">
         //<![CDATA[
-           jQuery(window).load(function(){
+           jQuery(window).on('load', function(){
                 jQuery().youamaAjaxLogin({
                     redirection : '<?php echo $this->isRedirectToProfile() ?>',
                     profileUrl : '<?php echo Mage::getBaseUrl() ?>customer/account/',
